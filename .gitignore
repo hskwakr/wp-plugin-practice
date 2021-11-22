@@ -1,0 +1,7 @@
+# Ignore everything in html directory except my plugin directory
+/wordpress/html/*
+!/wordpress/html/wp-content/
+/wordpress/html/wp-content/*
+!/wordpress/html/wp-content/plugins/
+/wordpress/html/wp-content/plugins/*
+!/wordpress/html/wp-content/plugins/hskwakr-practice/
