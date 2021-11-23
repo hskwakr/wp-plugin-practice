@@ -40,3 +40,45 @@ SOFTWARE.
 
 // Protect from illegal access
 defined( 'ABSPATH' ) or die( 'Cannot access this page.' );
+
+/**
+ * Class HskwakrPractice
+ * @author hskwakr
+ */
+class HskwakrPractice
+{
+  public function __construct()
+  {
+    add_action( 'init', array( $this, 'custom_post_type' ) );
+  }
+  
+  function activate()
+  {
+    $this->custom_post_type();
+    flush_rewrite_rules();
+  }
+
+  function deactivate()
+  {
+    flush_rewrite_rules();
+  }
+
+  function uninstall()
+  {
+  }
+
+  function custom_post_type()
+  {
+    register_post_type( 'book', ['public' => true, 'label' => 'Books'] );
+  }
+}
+
+if ( class_exists( 'HskwakrPractice' )) {
+  $hskwakrPractice = new HskwakrPractice();
+}
+
+// activation
+register_activation_hook( __FILE__, array( $hskwakrPractice, 'activate' ) );
+
+// deactivation
+register_deactivation_hook( __FILE__, array( $hskwakrPractice, 'deactivate' ) );
