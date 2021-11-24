@@ -58,6 +58,7 @@ class HskwakrPractice
   {
     add_action( 'admin_enque_scripts', array( $this, 'enqueue' ) );
     add_action( 'admin_menu', array( $this, 'add_admin_page' ) );
+    add_filter( 'plugin_action_links_' . $this->plugin, array( $this, 'settings_link' ) );
   }
   
   function activate()
@@ -89,6 +90,14 @@ class HskwakrPractice
   function admin_index()
   {
     require_once plugin_dir_path( __FILE__ ) . 'templates/admin.php';
+  }
+  
+  function settings_link( $links )
+  {
+    // add custom setting link
+    $settings_link = '<a href="admin.php?page=hskwakr_practice">Settings</a>';
+    array_push( $links, $settings_link );
+    return $links;
   }
   
   
