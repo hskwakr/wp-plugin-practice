@@ -49,7 +49,6 @@ class HskwakrPractice
 {
   public function __construct()
   {
-    add_action( 'init', array( $this, 'custom_post_type' ) );
   }
 
   function register()
@@ -71,6 +70,11 @@ class HskwakrPractice
     flush_rewrite_rules();
   }
 
+  function create_post_type()
+  {
+    add_action( 'init', array( $this, 'custom_post_type' ) );
+  }
+  
   function custom_post_type()
   {
     register_post_type( 'book', ['public' => true, 'label' => 'Books'] );
