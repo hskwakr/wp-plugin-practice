@@ -6,17 +6,22 @@
 - composer
 - docker
 
+Build and start virtual enviroment.
+
 ```sh
 cd wordpress
 docker-compose up -d
 ```
+
+End virtual enviroment.  
+`-v` removes all persistent data.
 
 ```sh
 cd wordpress
 docker-compose down -v
 ```
 
-`-v` removes all persistent data
+Initialize composer.
 
 ```
 cd wordpress/html/wp-content/plugins/hskwakr-practice
