@@ -14,7 +14,7 @@ final class Init
    * Store all the classes inside an array
    * @return array Full list of classes
    */
-  public static function get_services()
+  public static function getServices()
   {
     return [
       Base\Enqueue::class,
@@ -28,9 +28,9 @@ final class Init
    * and call the register method if it exists
    * @return
    */
-  public static function register_services()
+  public static function registerServices()
   {
-    foreach ( self::get_services() as $class ) {
+    foreach ( self::getServices() as $class ) {
       $service = self::instantiate( $class );
 
       if ( method_exists( $service, 'register' ) ) {

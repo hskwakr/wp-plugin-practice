@@ -66,5 +66,5 @@ register_deactivation_hook( __FILE__, 'deactivate_hskwakr_practice' );
 
 // Initialize all classes that we want to use
 if ( class_exists( 'Inc\\Init' ) ) {
-  Inc\Init::register_services();
+  Inc\Init::registerServices();
 }

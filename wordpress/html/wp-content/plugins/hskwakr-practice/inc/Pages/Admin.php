@@ -64,13 +64,13 @@ class Admin extends BaseController
   public function register()
   {
     $this->settings
-         ->add_pages( $this->pages )
-         ->with_sub_pages( 'Dashboard' )
-         ->add_subpages( $this->subpages )
+         ->addPages( $this->pages )
+         ->withSubpages( 'Dashboard' )
+         ->addSubpages( $this->subpages )
          ->register();
   }
 
-  function admin_index()
+  function adminIndex()
   {
     require_once $this->plugin_path . 'templates/admin.php';
   }

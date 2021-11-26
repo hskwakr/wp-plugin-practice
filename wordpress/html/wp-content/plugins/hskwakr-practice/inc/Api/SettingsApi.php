@@ -16,18 +16,18 @@ class SettingsApi
   public function register()
   {
     if ( ! empty( $this->admin_pages ) ) {
-      add_action( 'admin_menu', array( $this, 'add_admin_menu' ) );
+      add_action( 'admin_menu', array( $this, 'addAdminMenu' ) );
     }
   }
   
-  public function add_pages( array $pages )
+  public function addPages( array $pages )
   {
     $this->admin_pages = $pages;
 
     return $this;
   }
 
-  public function with_sub_pages( string $title = null )
+  public function withSubpages( string $title = null )
   {
     if ( empty( $this->admin_pages ) ) {
       return $this;
@@ -51,14 +51,14 @@ class SettingsApi
     return $this;
   }
 
-  public function add_subpages( array $pages )
+  public function addSubpages( array $pages )
   {
     $this->admin_subpages = array_merge( $this->admin_subpages, $pages );
 
     return $this;
   }
 
-  public function add_admin_menu()
+  public function addAdminMenu()
   {
     foreach ($this->admin_pages as $page) {
       add_menu_page(
