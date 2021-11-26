@@ -41,9 +41,14 @@ SOFTWARE.
 // Protect from illegal access
 defined( 'ABSPATH' ) or die( 'Cannot access this page.' );
 
-
 if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
   require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+}
+
+define( 'PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+
+if ( class_exists( 'Inc\\Init' ) ) {
+  Inc\Init::register_services();
 }
 
 /**
@@ -62,7 +67,6 @@ class HskwakrPractice
   function register()
   {
     add_action( 'admin_enque_scripts', array( $this, 'enqueue' ) );
-    add_action( 'admin_menu', array( $this, 'add_admin_page' ) );
     add_filter( 'plugin_action_links_' . $this->plugin, array( $this, 'settings_link' ) );
   }
   
@@ -87,16 +91,6 @@ class HskwakrPractice
     wp_enqueue_script( 'mypluginscript', plugins_url( '/assets/myscript.js', __FILE__ ) );
   }
 
-  function add_admin_page()
-  {
-    add_menu_page( 'hskwakr practice', 'hskwakr', 'manage_options', 'hskwakr_practice', array( $this, 'admin_index' ), 'dashicons-store', 110 );
-  }
-
-  function admin_index()
-  {
-    require_once plugin_dir_path( __FILE__ ) . 'templates/admin.php';
-  }
-  
   function settings_link( $links )
   {
     // add custom setting link
@@ -104,7 +98,6 @@ class HskwakrPractice
     array_push( $links, $settings_link );
     return $links;
   }
-  
   
   function create_post_type()
   {
