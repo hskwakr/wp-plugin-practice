@@ -23,7 +23,6 @@ final class Init
     ];
   }
   
-  
   /**
    * Loop through the classes, initialize them,
    * and call the register method if it exists

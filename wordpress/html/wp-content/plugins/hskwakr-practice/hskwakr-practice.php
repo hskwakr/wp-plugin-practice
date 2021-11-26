@@ -46,32 +46,22 @@ if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
   require_once dirname( __FILE__ ) . '/vendor/autoload.php';
 }
 
-// Define CONSTANTS
-define( 'PLUGIN_NAME', plugin_basename( __FILE__ ) );
-define( 'PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
-define( 'PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-
-use Inc\Base\Activate;
-use Inc\Base\Deactivate;
-
 /**
  * This runs during plugin activation
  */
 function activate_hskwakr_practice()
 {
-  Activate::activate();
+  Inc\Base\Activate::activate();
 }
+register_activation_hook( __FILE__, 'activate_hskwakr_practice' );
 
 /**
  * This runs during plugin deactivation
  */
 function deactivate_hskwakr_practice()
 {
-  Deactivate::deactivate();
+  Inc\Base\Deactivate::deactivate();
 }
-
-// Register activation/deactivation
-register_activation_hook( __FILE__, 'activate_hskwakr_practice' );
 register_deactivation_hook( __FILE__, 'deactivate_hskwakr_practice' );
 
 // Initialize all classes that we want to use
