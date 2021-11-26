@@ -5,3 +5,6 @@
 !/wordpress/html/wp-content/plugins/
 /wordpress/html/wp-content/plugins/*
 !/wordpress/html/wp-content/plugins/hskwakr-practice/
+
+# Ignore vendor for composer
+vendor/
