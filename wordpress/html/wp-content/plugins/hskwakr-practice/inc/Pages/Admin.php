@@ -79,9 +79,4 @@ class Admin extends BaseController
       ),
     );
   }
-
-  function adminIndex()
-  {
-    require_once $this->plugin_path . 'templates/admin.php';
-  }
 }
