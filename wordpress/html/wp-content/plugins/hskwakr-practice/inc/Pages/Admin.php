@@ -59,7 +59,7 @@ class Admin extends BaseController
         'menu_title'  => 'CPT',
         'capability'  => 'manage_options',
         'menu_slug'   => 'hskwakr_practice_cpt',
-        'callback'    => function() { echo '<h1>CPT Manager</h1>'; }
+        'callback'   => array( $this->callbacks, 'adminCpt' ),
       ),
       array(
         'parent_slug' => 'hskwakr_practice',
@@ -67,7 +67,7 @@ class Admin extends BaseController
         'menu_title'  => 'Taxonomies',
         'capability'  => 'manage_options',
         'menu_slug'   => 'hskwakr_practice_taxonomies',
-        'callback'    => function() { echo '<h1>Taxonomies Manager</h1>'; }
+        'callback'   => array( $this->callbacks, 'adminTaxonomy' ),
       ),
       array(
         'parent_slug' => 'hskwakr_practice',
@@ -75,7 +75,7 @@ class Admin extends BaseController
         'menu_title'  => 'Widgets',
         'capability'  => 'manage_options',
         'menu_slug'   => 'hskwakr_practice_widgets',
-        'callback'    => function() { echo '<h1>Widgets Manager</h1>'; }
+        'callback'   => array( $this->callbacks, 'adminWidget' ),
       ),
     );
   }
