@@ -28,6 +28,10 @@ class Admin extends BaseController
     $this->setPages();
     $this->setSubpages();
 
+    $this->setSettings();
+    $this->setSections();
+    $this->setFields();
+
     $this->settings
          ->addPages( $this->pages )
          ->withSubpages( 'Dashboard' )
@@ -78,5 +82,51 @@ class Admin extends BaseController
         'callback'   => array( $this->callbacks, 'adminWidget' ),
       ),
     );
+  }
+
+  function setSettings()
+  {
+    $args = array(
+      array(
+        'option_group' => 'hskwakr_practice_option_groups',
+        'option_name'  => 'text_example',
+        'callback'     => array( $this->callbacks, 'optionGroup' )
+      )
+    );
+
+    $this->settings->setSettings( $args );
+  }
+
+  function setSections()
+  {
+    $args = array(
+      array(
+        'id'       => 'hskwakr_practice_admin_index',
+        'title'    => 'Settings',
+        'callback' => array( $this->callbacks, 'adminSection' ),
+        'page'     => 'hskwakr_practice'
+      )
+    );
+
+    $this->settings->setSections( $args );
+  }
+
+  function setFields()
+  {
+    $args = array(
+      array(
+        'id'       => 'text_example',
+        'title'    => 'Text Example',
+        'callback' => array( $this->callbacks, 'textExample' ),
+        'page'     => 'hskwakr_practice',
+        'section'  => 'hskwakr_practice_admin_index',
+        'args'     => array(
+          'label_for' => 'text_example',
+          'class'     => 'example_class'
+        )
+      )
+    );
+
+    $this->settings->setFields( $args );
   }
 }
