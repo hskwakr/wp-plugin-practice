@@ -10,7 +10,7 @@ namespace Inc\Base;
  */
 abstract class BaseController
 {
-  public $plugin_name;
+  public $plugin_file;
   public $plugin_path;
   public $plugin_url;
 
@@ -20,6 +20,6 @@ abstract class BaseController
     $this->plugin_url  = plugin_dir_url( dirname( __FILE__, 2 ) );
 
     $name = plugin_basename( dirname( __FILE__, 3 ) );
-    $this->plugin_name = $name . '/' . $name . '.php';
+    $this->plugin_file = $name . '/' . $name . '.php';
   }
 }
