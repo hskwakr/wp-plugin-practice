@@ -91,6 +91,10 @@ class Admin extends BaseController
         'option_group' => 'hskwakr_practice_option_groups',
         'option_name'  => 'text_example',
         'callback'     => array( $this->callbacks, 'optionGroup' )
+      ),
+      array(
+        'option_group' => 'hskwakr_practice_option_groups',
+        'option_name'  => 'first_name'
       )
     );
 
@@ -122,6 +126,17 @@ class Admin extends BaseController
         'section'  => 'hskwakr_practice_admin_index',
         'args'     => array(
           'label_for' => 'text_example',
+          'class'     => 'example_class'
+        )
+      ),
+      array(
+        'id'       => 'first_name',
+        'title'    => 'First Name',
+        'callback' => array( $this->callbacks, 'firstName' ),
+        'page'     => 'hskwakr_practice',
+        'section'  => 'hskwakr_practice_admin_index',
+        'args'     => array(
+          'label_for' => 'first_name',
           'class'     => 'example_class'
         )
       )
