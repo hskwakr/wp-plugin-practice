@@ -7,12 +7,16 @@ window.addEventListener("load", function() {
   }
 
   function switchTab(event) {
+    event.preventDefault();
+
     document.querySelector("ul.nav-tabs li.active").classList.remove("active");
     document.querySelector(".tab-pane.active").classList.remove("active");
 
     var clickedTab = event.currentTarget;
+    var anchor = event.target;
+    var activePane = anchor.getAttribute("href");
 
-    clickTab.preventDefault();
-    clickTab.classList.add("active");
+    clickedTab.classList.add("active");
+    document.querySelector(activePane).classList.add("active");
   }
 });
