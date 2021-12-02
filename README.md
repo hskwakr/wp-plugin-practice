@@ -3,7 +3,6 @@
 ## Build enviroment for development
 
 ### Requirments
-- composer
 - docker
 
 Build and start virtual enviroment.
