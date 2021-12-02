@@ -74,6 +74,7 @@ class Plugin_Name_Admin {
 		 */
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/plugin-name-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name . '-bootstrap-css', plugin_dir_url( __FILE__ ) . 'css/bootstrap.min.css', array(), $this->version, 'all' );
 
 	}
 
@@ -97,6 +98,7 @@ class Plugin_Name_Admin {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/plugin-name-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name . '-bootstrap-js', plugin_dir_url( __FILE__ ) . 'js/bootstrap.min.js', array( 'jquery' ), $this->version, false );
 
 	}
 
@@ -144,6 +146,19 @@ class Plugin_Name_Admin {
   public function myplugin_admin_subpage()
   {
     require_once 'partials/plugin-name-admin-display-submenu.php';
+  }
+
+  /**
+   * Register custom fields for plugin settings
+   *
+   * @return result views
+   */
+  public function register_plugin_name_general_settings()
+  {
+    // register all settings for general settings page
+    register_setting( 'plugin_name_custom_settings', 'theemail' );
+    register_setting( 'plugin_name_custom_settings', 'thedays' );
+    register_setting( 'plugin_name_custom_settings', 'themultiselect' );
   }
 
 }
