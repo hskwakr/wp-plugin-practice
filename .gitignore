@@ -4,7 +4,4 @@
 /wordpress/html/wp-content/*
 !/wordpress/html/wp-content/plugins/
 /wordpress/html/wp-content/plugins/*
-!/wordpress/html/wp-content/plugins/hskwakr-practice/
-
-# Ignore vendor for composer
-vendor/
+!/wordpress/html/wp-content/plugins/plugin-name/
