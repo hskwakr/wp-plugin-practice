@@ -100,4 +100,50 @@ class Plugin_Name_Admin {
 
 	}
 
+	/**
+	 * Add our custom menu
+	 *
+	 * @since    1.0.0
+	 */
+	public function my_admin_menu() {
+    add_menu_page(
+      'New Plugin Title',
+      'Plugin Sttings',
+      'manage_options',
+      'plugin-name-mainsettings.php',
+      array( $this, 'myplugin_admin_page' ),
+      'dashicons-tickets',
+      250
+    );
+
+    add_submenu_page(
+      'plugin-name-mainsettings.php',
+      'My Sub Level Menu Example',
+      'Sub Level Menu',
+      'manage_options',
+      'plugin-name-importer.php',
+      array( $this, 'myplugin_admin_subpage' )
+    );
+  }
+
+  /**
+   * undocumented function
+   *
+   * @return result views
+   */
+  public function myplugin_admin_page()
+  {
+    require_once 'partials/plugin-name-admin-display.php';
+  }
+  
+  /**
+   * undocumented function
+   *
+   * @return result views
+   */
+  public function myplugin_admin_subpage()
+  {
+    require_once 'partials/plugin-name-admin-display-submenu.php';
+  }
+
 }
