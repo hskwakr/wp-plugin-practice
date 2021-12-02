@@ -20,10 +20,3 @@ End virtual enviroment.
 cd wordpress
 docker-compose down -v
 ```
-
-Initialize composer.
-
-```
-cd wordpress/html/wp-content/plugins/hskwakr-practice
-composer install
-```
