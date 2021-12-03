@@ -100,4 +100,15 @@ class Plugin_Name_Public {
 
 	}
 
+	/**
+	 * our first shortcode
+	 *
+	 * @since    1.0.0
+	 */
+	public function public_hello_world() {
+    // get the general setting options 
+    $user_days = get_option('thedays');
+
+    echo ( 'Day Number: ' . $user_days );
+  }
 }
