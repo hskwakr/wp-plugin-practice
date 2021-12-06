@@ -112,10 +112,18 @@ for file in ${REPLACE_FILES}; do
 done
 
 # Rename names in plugin
+change_name() {
+  find "${DIR}/${PLUGIN_PATH}/${PLUGIN_FILE}" -name "*.*" -print0 | xargs -0 sed -i -e "s/${1}/${2}/g"
+}
+
 echo "change name from ${ORIGIN_NAME_1} to ${PLUGIN_NAME_1}..."
+change_name "${ORIGIN_NAME_1}" "${PLUGIN_NAME_1}"
 echo "change name from ${ORIGIN_NAME_2} to ${PLUGIN_NAME_2}..."
+change_name "${ORIGIN_NAME_2}" "${PLUGIN_NAME_2}"
 echo "change name from ${ORIGIN_NAME_3} to ${PLUGIN_NAME_3}..."
+change_name "${ORIGIN_NAME_3}" "${PLUGIN_NAME_3}"
 echo "change name from ${ORIGIN_NAME_4} to ${PLUGIN_NAME_4}..."
+change_name "${ORIGIN_NAME_4}" "${PLUGIN_NAME_4}"
 
 echo "Remove temporal files..."
 # Remove zip file
