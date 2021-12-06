@@ -44,11 +44,14 @@ if ! has "sed"; then
   exit 1
 fi
 
+if ! has "xargs"; then
+  echo "xargs required"
+  exit 1
+fi
+
 # Check ${PLUGIN_PATH} is exist or not
 if [ ! -d "${DIR}/${PLUGIN_PATH}" ]; then
   echo "PLUGIN_PATH does not exist."
-  echo "You shold run 'docker-compose up -d' first."
-  echo "Or PLUGIN_PATH may be wrong."
   echo "PLUGIN_PATH: ${PLUGIN_PATH}"
   exit 1
 fi
