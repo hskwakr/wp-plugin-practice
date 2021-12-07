@@ -75,6 +75,8 @@ class Hskwakr_Practice_Youtube_Admin {
 
 		wp_enqueue_style( $this->hskwakr_practice_youtube, plugin_dir_url( __FILE__ ) . 'css/hskwakr-practice-youtube-admin.css', array(), $this->version, 'all' );
 
+    // bootstrap
+		wp_enqueue_style( $this->hskwakr_practice_youtube . '-bootstrap-css', plugin_dir_url( __FILE__ ) . 'css/bootstrap.min.css', array(), $this->version, 'all' );
 	}
 
 	/**
@@ -97,6 +99,9 @@ class Hskwakr_Practice_Youtube_Admin {
 		 */
 
 		wp_enqueue_script( $this->hskwakr_practice_youtube, plugin_dir_url( __FILE__ ) . 'js/hskwakr-practice-youtube-admin.js', array( 'jquery' ), $this->version, false );
+
+    // bootstrap
+		wp_enqueue_script( $this->hskwakr_practice_youtube . '-bootstrap-js', plugin_dir_url( __FILE__ ) . 'js/bootstrap.min.js', array( 'jquery' ), $this->version, false );
 
 	}
 
