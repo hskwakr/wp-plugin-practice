@@ -75,6 +75,8 @@ class Hskwakr_Practice_Youtube_Admin {
 
 		wp_enqueue_style( $this->hskwakr_practice_youtube, plugin_dir_url( __FILE__ ) . 'css/hskwakr-practice-youtube-admin.css', array(), $this->version, 'all' );
 
+    // bootstrap
+		wp_enqueue_style( $this->hskwakr_practice_youtube . '-bootstrap-css', plugin_dir_url( __FILE__ ) . 'css/bootstrap.min.css', array(), $this->version, 'all' );
 	}
 
 	/**
@@ -98,6 +100,43 @@ class Hskwakr_Practice_Youtube_Admin {
 
 		wp_enqueue_script( $this->hskwakr_practice_youtube, plugin_dir_url( __FILE__ ) . 'js/hskwakr-practice-youtube-admin.js', array( 'jquery' ), $this->version, false );
 
+    // bootstrap
+		wp_enqueue_script( $this->hskwakr_practice_youtube . '-bootstrap-js', plugin_dir_url( __FILE__ ) . 'js/bootstrap.min.js', array( 'jquery' ), $this->version, false );
+
 	}
+
+	/**
+	 * Add our custom menu.
+	 *
+	 * @since    1.0.0
+	 */
+	public function my_admin_menu() {
+    add_menu_page(
+      'hskwakr Youtube General Settings',
+      'Settings',
+      'manage_options',
+      'hskwakr-practice-youtube-general-settings.php',
+      array( $this, 'my_plugin_admin_page' ),
+      'dashicons-tickets',
+      250
+    );
+
+    add_submenu_page(
+      'hskwakr-practice-youtube-general-settings.php',
+      'hskwakr Youtube Importer',
+      'Importer',
+      'manage_options',
+      'hskwakr-practice-youtube-importer.php',
+      array( $this, 'my_plugin_youtube_importer' )
+    );
+  }
+
+  public function my_plugin_admin_page() {
+    require_once 'partials/hskwakr-practice-youtube-admin-display.php';
+  }
+
+  public function my_plugin_youtube_importer() {
+    require_once 'partials/hskwakr-practice-youtube-importer.php';
+  }
 
 }
