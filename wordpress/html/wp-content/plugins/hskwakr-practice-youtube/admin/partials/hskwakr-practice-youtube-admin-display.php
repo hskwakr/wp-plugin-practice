@@ -25,14 +25,19 @@
         <hr class="my-4">
         
         <form method="POST" action="options.php">
+          <?php
+            settings_fields( 'hskwakr-practice-youtube-custom-settings' );
+            do_settings_sections( 'hskwakr-practice-youtube-custom-settings' );
+          ?>
+
           <div class="mb-3">
             <label for="hskwakrYoutubeAPIKey">YouTube API Key</label>
-            <input type="text" name="hskwakrYoutubeAPIKey" value="" class="form-control" id="youtubeapikey" placeholder="Your YouTube API Key">
+            <input type="text" name="hskwakrYoutubeAPIKey" value="<?php echo get_option( 'hskwakrYoutubeAPIKey' ); ?>" class="form-control" id="youtubeapikey" placeholder="Your YouTube API Key">
           </div>
 
           <div class="mb-3">
             <label for="hskwakrYoutubeChannelId">YouTube Channel ID</label>
-            <input type="text" name="hskwakrYoutubeChannelId" value="" class="form-control" id="youtubechannelid" placeholder="Your YouTube Channel ID">
+            <input type="text" name="hskwakrYoutubeChannelId" value="<?php echo get_option( 'hskwakrYoutubeChannelId' ); ?>" class="form-control" id="youtubechannelid" placeholder="Your YouTube Channel ID">
           </div>
 
           <button type="submit" class="btn btn-primary">Submit</button>

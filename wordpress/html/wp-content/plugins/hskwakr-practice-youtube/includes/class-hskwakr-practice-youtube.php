@@ -159,6 +159,10 @@ class Hskwakr_Practice_Youtube {
 
     // add admin menu page
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'my_admin_menu' );
+
+    // register genenral settings
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_my_plugin_general_settings' );
+
 	}
 
 	/**

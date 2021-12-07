@@ -139,4 +139,15 @@ class Hskwakr_Practice_Youtube_Admin {
     require_once 'partials/hskwakr-practice-youtube-importer.php';
   }
 
+	/**
+	 * Add our custom menu.
+	 *
+	 * @since    1.0.0
+	 */
+	public function register_my_plugin_general_settings() {
+    // registers all settings
+    register_setting( 'hskwakr-practice-youtube-custom-settings', 'hskwakrYoutubeAPIKey' );
+    register_setting( 'hskwakr-practice-youtube-custom-settings', 'hskwakrYoutubeChannelId' );
+  }
+
 }
