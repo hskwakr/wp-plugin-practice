@@ -100,4 +100,38 @@ class Hskwakr_Practice_Youtube_Admin {
 
 	}
 
+	/**
+	 * Add our custom menu.
+	 *
+	 * @since    1.0.0
+	 */
+	public function my_admin_menu() {
+    add_menu_page(
+      'hskwakr Youtube General Settings',
+      'Settings',
+      'manage_options',
+      'hskwakr-practice-youtube-general-settings.php',
+      array( $this, 'my_plugin_admin_page' ),
+      'dashicons-tickets',
+      250
+    );
+
+    add_submenu_page(
+      'hskwakr-practice-youtube-general-settings.php',
+      'hskwakr Youtube Importer',
+      'Importer',
+      'manage_options',
+      'hskwakr-practice-youtube-importer.php',
+      array( $this, 'my_plugin_youtube_importer' )
+    );
+  }
+
+  public function my_plugin_admin_page() {
+    require_once 'partials/hskwakr-practice-youtube-admin-display.php';
+  }
+
+  public function my_plugin_youtube_importer() {
+    require_once 'partials/hskwakr-practice-youtube-importer.php';
+  }
+
 }
