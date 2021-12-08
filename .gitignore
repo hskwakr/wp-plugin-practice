@@ -6,3 +6,6 @@
 /wordpress/html/wp-content/plugins/*
 !/wordpress/html/wp-content/plugins/plugin-name/
 !/wordpress/html/wp-content/plugins/hskwakr-practice-youtube/
+
+# Ignore config file for formatter
+.php-cs-fixer.cache
