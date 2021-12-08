@@ -19,7 +19,7 @@
  * Version:           1.0.0
  * Author:            hskwakr
  * Author URI:        https://github.com/hskwakr
- * License:           GPL-2.0+
+ * License:           MIT
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       hskwakr-practice-youtube
  * Domain Path:       /languages
