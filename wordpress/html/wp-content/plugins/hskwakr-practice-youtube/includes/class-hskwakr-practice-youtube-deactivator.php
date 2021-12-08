@@ -20,17 +20,16 @@
  * @subpackage Hskwakr_Practice_Youtube/includes
  * @author     hskwakr <33633391+hskwakr@users.noreply.github.com>
  */
-class Hskwakr_Practice_Youtube_Deactivator {
-
-	/**
-	 * Short Description. (use period)
-	 *
-	 * Long Description.
-	 *
-	 * @since    1.0.0
-	 */
-	public static function deactivate() {
-
-	}
-
+class Hskwakr_Practice_Youtube_Deactivator
+{
+    /**
+     * Short Description. (use period)
+     *
+     * Long Description.
+     *
+     * @since    1.0.0
+     */
+    public static function deactivate()
+    {
+    }
 }

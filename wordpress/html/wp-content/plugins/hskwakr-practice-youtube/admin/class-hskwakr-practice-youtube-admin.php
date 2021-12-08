@@ -20,134 +20,137 @@
  * @subpackage Hskwakr_Practice_Youtube/admin
  * @author     hskwakr <33633391+hskwakr@users.noreply.github.com>
  */
-class Hskwakr_Practice_Youtube_Admin {
+class Hskwakr_Practice_Youtube_Admin
+{
+    /**
+     * The ID of this plugin.
+     *
+     * @since    1.0.0
+     * @access   private
+     * @var      string    $hskwakr_practice_youtube    The ID of this plugin.
+     */
+    private $hskwakr_practice_youtube;
 
-	/**
-	 * The ID of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $hskwakr_practice_youtube    The ID of this plugin.
-	 */
-	private $hskwakr_practice_youtube;
+    /**
+     * The version of this plugin.
+     *
+     * @since    1.0.0
+     * @access   private
+     * @var      string    $version    The current version of this plugin.
+     */
+    private $version;
 
-	/**
-	 * The version of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $version    The current version of this plugin.
-	 */
-	private $version;
+    /**
+     * Initialize the class and set its properties.
+     *
+     * @since    1.0.0
+     * @param      string    $hskwakr_practice_youtube       The name of this plugin.
+     * @param      string    $version    The version of this plugin.
+     */
+    public function __construct($hskwakr_practice_youtube, $version)
+    {
+        $this->hskwakr_practice_youtube = $hskwakr_practice_youtube;
+        $this->version = $version;
+    }
 
-	/**
-	 * Initialize the class and set its properties.
-	 *
-	 * @since    1.0.0
-	 * @param      string    $hskwakr_practice_youtube       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
-	 */
-	public function __construct( $hskwakr_practice_youtube, $version ) {
+    /**
+     * Register the stylesheets for the admin area.
+     *
+     * @since    1.0.0
+     */
+    public function enqueue_styles()
+    {
 
-		$this->hskwakr_practice_youtube = $hskwakr_practice_youtube;
-		$this->version = $version;
+        /**
+         * This function is provided for demonstration purposes only.
+         *
+         * An instance of this class should be passed to the run() function
+         * defined in Hskwakr_Practice_Youtube_Loader as all of the hooks are defined
+         * in that particular class.
+         *
+         * The Hskwakr_Practice_Youtube_Loader will then create the relationship
+         * between the defined hooks and the functions defined in this
+         * class.
+         */
 
-	}
+        wp_enqueue_style($this->hskwakr_practice_youtube, plugin_dir_url(__FILE__) . 'css/hskwakr-practice-youtube-admin.css', array(), $this->version, 'all');
 
-	/**
-	 * Register the stylesheets for the admin area.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_styles() {
+        // bootstrap
+        wp_enqueue_style($this->hskwakr_practice_youtube . '-bootstrap-css', plugin_dir_url(__FILE__) . 'css/bootstrap.min.css', array(), $this->version, 'all');
+    }
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Hskwakr_Practice_Youtube_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Hskwakr_Practice_Youtube_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
+    /**
+     * Register the JavaScript for the admin area.
+     *
+     * @since    1.0.0
+     */
+    public function enqueue_scripts()
+    {
 
-		wp_enqueue_style( $this->hskwakr_practice_youtube, plugin_dir_url( __FILE__ ) . 'css/hskwakr-practice-youtube-admin.css', array(), $this->version, 'all' );
+        /**
+         * This function is provided for demonstration purposes only.
+         *
+         * An instance of this class should be passed to the run() function
+         * defined in Hskwakr_Practice_Youtube_Loader as all of the hooks are defined
+         * in that particular class.
+         *
+         * The Hskwakr_Practice_Youtube_Loader will then create the relationship
+         * between the defined hooks and the functions defined in this
+         * class.
+         */
 
-    // bootstrap
-		wp_enqueue_style( $this->hskwakr_practice_youtube . '-bootstrap-css', plugin_dir_url( __FILE__ ) . 'css/bootstrap.min.css', array(), $this->version, 'all' );
-	}
+        wp_enqueue_script($this->hskwakr_practice_youtube, plugin_dir_url(__FILE__) . 'js/hskwakr-practice-youtube-admin.js', array( 'jquery' ), $this->version, false);
 
-	/**
-	 * Register the JavaScript for the admin area.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_scripts() {
+        // bootstrap
+        wp_enqueue_script($this->hskwakr_practice_youtube . '-bootstrap-js', plugin_dir_url(__FILE__) . 'js/bootstrap.min.js', array( 'jquery' ), $this->version, false);
+    }
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Hskwakr_Practice_Youtube_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Hskwakr_Practice_Youtube_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
+    /**
+     * Add our custom menu.
+     *
+     * @since    1.0.0
+     */
+    public function my_admin_menu()
+    {
+        add_menu_page(
+            'hskwakr Youtube General Settings',
+            'Settings',
+            'manage_options',
+            'hskwakr-practice-youtube-general-settings.php',
+            array( $this, 'my_plugin_admin_page' ),
+            'dashicons-tickets',
+            250
+        );
 
-		wp_enqueue_script( $this->hskwakr_practice_youtube, plugin_dir_url( __FILE__ ) . 'js/hskwakr-practice-youtube-admin.js', array( 'jquery' ), $this->version, false );
+        add_submenu_page(
+            'hskwakr-practice-youtube-general-settings.php',
+            'hskwakr Youtube Importer',
+            'Importer',
+            'manage_options',
+            'hskwakr-practice-youtube-importer.php',
+            array( $this, 'my_plugin_youtube_importer' )
+        );
+    }
 
-    // bootstrap
-		wp_enqueue_script( $this->hskwakr_practice_youtube . '-bootstrap-js', plugin_dir_url( __FILE__ ) . 'js/bootstrap.min.js', array( 'jquery' ), $this->version, false );
+    public function my_plugin_admin_page()
+    {
+        require_once 'partials/hskwakr-practice-youtube-admin-display.php';
+    }
 
-	}
+    public function my_plugin_youtube_importer()
+    {
+        require_once 'partials/hskwakr-practice-youtube-importer.php';
+    }
 
-	/**
-	 * Add our custom menu.
-	 *
-	 * @since    1.0.0
-	 */
-	public function my_admin_menu() {
-    add_menu_page(
-      'hskwakr Youtube General Settings',
-      'Settings',
-      'manage_options',
-      'hskwakr-practice-youtube-general-settings.php',
-      array( $this, 'my_plugin_admin_page' ),
-      'dashicons-tickets',
-      250
-    );
-
-    add_submenu_page(
-      'hskwakr-practice-youtube-general-settings.php',
-      'hskwakr Youtube Importer',
-      'Importer',
-      'manage_options',
-      'hskwakr-practice-youtube-importer.php',
-      array( $this, 'my_plugin_youtube_importer' )
-    );
-  }
-
-  public function my_plugin_admin_page() {
-    require_once 'partials/hskwakr-practice-youtube-admin-display.php';
-  }
-
-  public function my_plugin_youtube_importer() {
-    require_once 'partials/hskwakr-practice-youtube-importer.php';
-  }
-
-	/**
-	 * Add our custom menu.
-	 *
-	 * @since    1.0.0
-	 */
-	public function register_my_plugin_general_settings() {
-    // registers all settings
-    register_setting( 'hskwakr-practice-youtube-custom-settings', 'hskwakrYoutubeAPIKey' );
-    register_setting( 'hskwakr-practice-youtube-custom-settings', 'hskwakrYoutubeChannelId' );
-  }
-
+    /**
+     * Add our custom menu.
+     *
+     * @since    1.0.0
+     */
+    public function register_my_plugin_general_settings()
+    {
+        // registers all settings
+        register_setting('hskwakr-practice-youtube-custom-settings', 'hskwakrYoutubeAPIKey');
+        register_setting('hskwakr-practice-youtube-custom-settings', 'hskwakrYoutubeChannelId');
+    }
 }

@@ -17,7 +17,7 @@
  * Plugin URI:        https://github.com/hskwakr/wp-plugin-practice
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
  * Version:           1.0.0
- * Author:            hskwakr 
+ * Author:            hskwakr
  * Author URI:        https://github.com/hskwakr
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
@@ -26,8 +26,8 @@
  */
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
-	die;
+if (! defined('WPINC')) {
+    die;
 }
 
 /**
@@ -35,34 +35,36 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'HSKWAKR_PRACTICE_YOUTUBE_VERSION', '1.0.0' );
+define('HSKWAKR_PRACTICE_YOUTUBE_VERSION', '1.0.0');
 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-hskwakr-practice-youtube-activator.php
  */
-function activate_hskwakr_practice_youtube() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-hskwakr-practice-youtube-activator.php';
-	Hskwakr_Practice_Youtube_Activator::activate();
+function activate_hskwakr_practice_youtube()
+{
+    require_once plugin_dir_path(__FILE__) . 'includes/class-hskwakr-practice-youtube-activator.php';
+    Hskwakr_Practice_Youtube_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-hskwakr-practice-youtube-deactivator.php
  */
-function deactivate_hskwakr_practice_youtube() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-hskwakr-practice-youtube-deactivator.php';
-	Hskwakr_Practice_Youtube_Deactivator::deactivate();
+function deactivate_hskwakr_practice_youtube()
+{
+    require_once plugin_dir_path(__FILE__) . 'includes/class-hskwakr-practice-youtube-deactivator.php';
+    Hskwakr_Practice_Youtube_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_hskwakr_practice_youtube' );
-register_deactivation_hook( __FILE__, 'deactivate_hskwakr_practice_youtube' );
+register_activation_hook(__FILE__, 'activate_hskwakr_practice_youtube');
+register_deactivation_hook(__FILE__, 'deactivate_hskwakr_practice_youtube');
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-hskwakr-practice-youtube.php';
+require plugin_dir_path(__FILE__) . 'includes/class-hskwakr-practice-youtube.php';
 
 /**
  * Begins execution of the plugin.
@@ -73,10 +75,9 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-hskwakr-practice-youtube.p
  *
  * @since    1.0.0
  */
-function run_hskwakr_practice_youtube() {
-
-	$plugin = new Hskwakr_Practice_Youtube();
-	$plugin->run();
-
+function run_hskwakr_practice_youtube()
+{
+    $plugin = new Hskwakr_Practice_Youtube();
+    $plugin->run();
 }
 run_hskwakr_practice_youtube();

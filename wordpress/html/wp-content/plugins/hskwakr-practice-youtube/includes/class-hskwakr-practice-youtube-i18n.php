@@ -24,24 +24,19 @@
  * @subpackage Hskwakr_Practice_Youtube/includes
  * @author     hskwakr <33633391+hskwakr@users.noreply.github.com>
  */
-class Hskwakr_Practice_Youtube_i18n {
-
-
-	/**
-	 * Load the plugin text domain for translation.
-	 *
-	 * @since    1.0.0
-	 */
-	public function load_plugin_textdomain() {
-
-		load_plugin_textdomain(
-			'hskwakr-practice-youtube',
-			false,
-			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
-		);
-
-	}
-
-
-
+class Hskwakr_Practice_Youtube_i18n
+{
+    /**
+     * Load the plugin text domain for translation.
+     *
+     * @since    1.0.0
+     */
+    public function load_plugin_textdomain()
+    {
+        load_plugin_textdomain(
+            'hskwakr-practice-youtube',
+            false,
+            dirname(dirname(plugin_basename(__FILE__))) . '/languages/'
+        );
+    }
 }
