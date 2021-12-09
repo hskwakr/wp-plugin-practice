@@ -46,3 +46,33 @@
     </div>
   </div>
 </div> 
+
+<?php
+
+$youtube_api_url = 'https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=';
+$youtube_api_max = '5';
+$youtube_api_key = get_option('hskwakrYoutubeAPIKey');
+
+$youtube_channel_id = get_option('hskwakrYoutubeChannelId');
+
+$youtube_api_query =
+  $youtube_api_url .
+  $youtube_channel_id .
+  '&maxResults=' .
+  $youtube_api_max .
+  '&key=' .
+  $youtube_api_key .
+  '';
+
+$video_list = json_decode(file_get_contents($youtube_api_query));
+
+// sort through the items and output
+foreach ($video_list->items as $item) {
+    echo '<div style="border:2px solid black;">';
+    echo $item->snippet->title . '<br>';
+    echo $item->snippet->description . '<br>';
+    echo '<img src="' . $item->snippet->thumbnails->medium->url . '"><br>';
+    echo '</div><br>';
+}
+
+?>
