@@ -161,6 +161,9 @@ class Hskwakr_Practice_Youtube
 
         // register genenral settings
         $this->loader->add_action('admin_init', $plugin_admin, 'register_my_plugin_general_settings');
+
+        // create custom post type
+        $this->loader->add_action('init', $plugin_admin, 'custom_youtube_api');
     }
 
     /**
