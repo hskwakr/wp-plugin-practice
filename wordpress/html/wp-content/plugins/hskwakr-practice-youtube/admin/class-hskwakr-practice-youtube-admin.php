@@ -156,9 +156,9 @@ class Hskwakr_Practice_Youtube_Admin
     /**
      * Create custom post type for youtube videos
      *
-     * @return void
+     * @since    1.0.0
      */
-    public function custom_youtube_api($param)
+    public function custom_youtube_api()
     {
         $name = 'videos-hpy';
         /**
