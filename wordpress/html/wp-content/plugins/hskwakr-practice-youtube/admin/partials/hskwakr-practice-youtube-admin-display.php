@@ -49,8 +49,10 @@
 
 <?php
 
+$cpt_name = 'videos-hpy';
+
 $youtube_api_url = 'https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=';
-$youtube_api_max = '5';
+$youtube_api_max = '1';
 $youtube_api_key = get_option('hskwakrYoutubeAPIKey');
 
 $youtube_channel_id = get_option('hskwakrYoutubeChannelId');
@@ -66,13 +68,37 @@ $youtube_api_query =
 
 $video_list = json_decode(file_get_contents($youtube_api_query));
 
-// sort through the items and output
+// loop through the videos
 foreach ($video_list->items as $item) {
-    echo '<div style="border:2px solid black;">';
-    echo $item->snippet->title . '<br>';
-    echo $item->snippet->description . '<br>';
-    echo '<img src="' . $item->snippet->thumbnails->medium->url . '"><br>';
-    echo '</div><br>';
+    // add videos as custom post type
+
+    // insert a new post type
+    $data = array(
+      'post_title' => $item->snippet->title,
+      'post_content' => $item->snippet->description,
+      'post_status' => 'publish',
+      'post_type' => $cpt_name
+    );
+
+    // insert into DB
+    $result = wp_insert_post($data);
+
+    // capture the ID of the post
+    if ($result && ! is_wp_error($result)) {
+        $new_post_id = $result;
+
+        // add youtube meta data
+        add_post_meta($new_post_id, 'hpy_video_id', $item->id);
+        add_post_meta($new_post_id, 'hpy_published_at', $item->snippet->publishedAt);
+        add_post_meta($new_post_id, 'hpy_channel_id', $item->snippet->channelId);
+        add_post_meta($new_post_id, 'hpy_y_title', $item->snippet->title);
+        add_post_meta($new_post_id, 'hpy_y_description', $item->snippet->description);
+        add_post_meta($new_post_id, 'hpy_img_res_med', $item->snippet->thumbnails->medium->url);
+        add_post_meta($new_post_id, 'hpy_img_res_high', $item->snippet->thumbnails->high->url);
+
+        // DEBUG: output the med res img
+        echo '<img src="' . get_post_meta($new_post_id, 'hpy_img_res_med', true) . '">';
+    }
 }
 
 ?>
