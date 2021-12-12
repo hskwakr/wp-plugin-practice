@@ -36,8 +36,8 @@ do_settings_sections('hskwakr_practice_youtube_custom_settings');
           </div>
 
           <div class="mb-3">
-            <label for="hskwakrYoutubeChannelId">YouTube Channel ID</label>
-            <input type="text" name="hskwakrYoutubeChannelId" value="<?php echo get_option('hskwakrYoutubeChannelId'); ?>" class="form-control" id="youtubechannelid" placeholder="Your YouTube Channel ID">
+            <label for="hskwakr_youtube_channelid">YouTube Channel ID</label>
+            <input type="text" name="hskwakr_youtube_channelid" value="<?php echo get_option('hskwakr_youtube_channelid'); ?>" class="form-control" id="youtubechannelid" placeholder="Your YouTube Channel ID">
           </div>
 
           <button type="submit" class="btn btn-primary">Submit</button>
