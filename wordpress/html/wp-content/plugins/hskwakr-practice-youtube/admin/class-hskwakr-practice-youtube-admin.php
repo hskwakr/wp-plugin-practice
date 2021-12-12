@@ -147,10 +147,16 @@ class Hskwakr_Practice_Youtube_Admin
      *
      * @since    1.0.0
      */
-    public function register_my_plugin_general_settings()
+    public function register_hpy_general_settings()
     {
         register_setting('hskwakr_practice_youtube_custom_settings', 'hskwakr_youtube_apikey');
         register_setting('hskwakr_practice_youtube_custom_settings', 'hskwakr_youtube_channelid');
+    }
+
+    public function register_hpy_shortcode_settings()
+    {
+        register_setting('hskwakr_practice_youtube_shortcode_settings', 'hskwakr_post_count');
+        register_setting('hskwakr_practice_youtube_shortcode_settings', 'hskwakr_video_styletype');
     }
 
     /**

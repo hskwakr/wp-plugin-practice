@@ -159,8 +159,9 @@ class Hskwakr_Practice_Youtube
         // add admin menu page
         $this->loader->add_action('admin_menu', $plugin_admin, 'my_admin_menu');
 
-        // register genenral settings
-        $this->loader->add_action('admin_init', $plugin_admin, 'register_my_plugin_general_settings');
+        // register settings
+        $this->loader->add_action('admin_init', $plugin_admin, 'register_hpy_general_settings');
+        $this->loader->add_action('admin_init', $plugin_admin, 'register_hpy_shortcode_settings');
 
         // create custom post type
         $this->loader->add_action('init', $plugin_admin, 'custom_youtube_api');
