@@ -13,48 +13,7 @@
  */
 ?>
 
-<?php
-if (isset($_GET['var1'])) {
-    $new_var1 = $_GET['var1'];
-}
-
-if ($new_var1 == 'yes') {
-    ?>
-
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
-<div class="container" style="max-width:100%;">
-  <div class="row">
-    <div class="col">
-      <div class="alert alert-warning">
-        <h1>YouTube API Importer</h1>
-        <p class="lead">Use this section to save your API key and channel ID for video imports.</p> 
-        <hr class="my-4">
-        
-        <form method="POST" action="options.php">
-          <?php
-            settings_fields('hskwakr-practice-youtube-custom-settings');
-    do_settings_sections('hskwakr-practice-youtube-custom-settings'); ?>
-
-          <div class="mb-3">
-            <label for="hskwakrYoutubeAPIKey">YouTube API Key</label>
-            <input type="text" name="hskwakrYoutubeAPIKey" value="<?php echo get_option('hskwakrYoutubeAPIKey'); ?>" class="form-control" id="youtubeapikey" placeholder="Your YouTube API Key">
-          </div>
-
-          <div class="mb-3">
-            <label for="hskwakrYoutubeChannelId">YouTube Channel ID</label>
-            <input type="text" name="hskwakrYoutubeChannelId" value="<?php echo get_option('hskwakrYoutubeChannelId'); ?>" class="form-control" id="youtubechannelid" placeholder="Your YouTube Channel ID">
-          </div>
-
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div> 
-
-<?php
-}
-?>
 
 <?php
 
