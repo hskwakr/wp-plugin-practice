@@ -31,8 +31,8 @@ do_settings_sections('hskwakr-practice-youtube-custom-settings');
 ?>
 
           <div class="mb-3">
-            <label for="hskwakrYoutubeAPIKey">YouTube API Key</label>
-            <input type="text" name="hskwakrYoutubeAPIKey" value="<?php echo get_option('hskwakrYoutubeAPIKey'); ?>" class="form-control" id="youtubeapikey" placeholder="Your YouTube API Key">
+            <label for="hskwakr_youtube_apikey">YouTube API Key</label>
+            <input type="text" name="hskwakr_youtube_apikey" value="<?php echo get_option('hskwakr_youtube_apikey'); ?>" class="form-control" id="youtubeapikey" placeholder="Your YouTube API Key">
           </div>
 
           <div class="mb-3">
@@ -58,12 +58,12 @@ do_settings_sections('hskwakr-practice-youtube-shortcode-settings');
 ?>
 
           <div class="mb-3">
-            <label for="hskwakrYoutubeAPIKey">YouTube API Key</label>
-            <input type="text" name="hskwakrYoutubeAPIKey" value="<?php echo get_option('hskwakrYoutubeAPIKey'); ?>" class="form-control" id="youtubeapikey" placeholder="Your YouTube API Key">
+            <label for="hskwakr_youtube_apikey">YouTube API Key</label>
+            <input type="text" name="hskwakr_youtube_apikey" value="<?php echo get_option('hskwakr_youtube_apikey'); ?>" class="form-control" id="youtubeapikey" placeholder="Your YouTube API Key">
           </div>
 
           <div class="mb-3">
-            <label for="hskwakrYoutubeAPIKey">YouTube API Key</label>
+            <label for="hskwakr_youtube_apikey">YouTube API Key</label>
             <select class="form-select" aria-label="Default select example">
               <option selected>Open this select menu</option>
               <option value="1">One</option>

@@ -22,7 +22,7 @@ $cpt_name = 'videos-hpy';
 
 $youtube_api_url = 'https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=';
 $youtube_api_max = '1';
-$youtube_api_key = get_option('hskwakrYoutubeAPIKey');
+$youtube_api_key = get_option('hskwakr_youtube_apikey');
 
 $youtube_channel_id = get_option('hskwakrYoutubeChannelId');
 
