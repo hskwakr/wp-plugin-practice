@@ -53,8 +53,8 @@ do_settings_sections('hskwakr_practice_youtube_custom_settings');
         <form method="POST" action="options.php">
 
 <?php
-settings_fields('hskwakr-practice-youtube-shortcode-settings');
-do_settings_sections('hskwakr-practice-youtube-shortcode-settings');
+settings_fields('hskwakr_practice_youtube_shortcode_settings');
+do_settings_sections('hskwakr_practice_youtube_shortcode_settings');
 ?>
 
           <div class="mb-3">
