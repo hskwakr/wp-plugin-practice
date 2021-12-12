@@ -26,8 +26,8 @@
         <form method="POST" action="options.php">
 
 <?php
-settings_fields('hskwakr-practice-youtube-custom-settings');
-do_settings_sections('hskwakr-practice-youtube-custom-settings');
+settings_fields('hskwakr_practice_youtube_custom_settings');
+do_settings_sections('hskwakr_practice_youtube_custom_settings');
 ?>
 
           <div class="mb-3">
