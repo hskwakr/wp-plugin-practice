@@ -153,6 +153,12 @@ class Hskwakr_Practice_Youtube_Admin
         register_setting('hskwakr_practice_youtube_custom_settings', 'hskwakr_youtube_channelid');
     }
 
+    public function register_hpy_shortcode_settings()
+    {
+        register_setting('hskwakr_practice_youtube_shortcode_settings', 'hskwakr_post_count');
+        register_setting('hskwakr_practice_youtube_shortcode_settings', 'hskwakr_video_styletype');
+    }
+
     /**
      * Create custom post type for youtube videos
      *
