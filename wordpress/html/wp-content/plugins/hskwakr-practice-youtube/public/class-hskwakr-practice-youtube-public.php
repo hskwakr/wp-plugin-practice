@@ -98,4 +98,12 @@ class Hskwakr_Practice_Youtube_Public
 
         wp_enqueue_script($this->hskwakr_practice_youtube, plugin_dir_url(__FILE__) . 'js/hskwakr-practice-youtube-public.js', array( 'jquery' ), $this->version, false);
     }
+
+    /**
+     * Output video shortcode function
+     *
+     */
+    public function hpy_display_videos()
+    {
+    }
 }

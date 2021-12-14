@@ -180,6 +180,9 @@ class Hskwakr_Practice_Youtube
 
         $this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
         $this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
+
+        // add shortcode for our plugin
+        $this->loader->add_shortcode('hpy_display_videos', $plugin_public, 'hpy_display_videos');
     }
 
     /**

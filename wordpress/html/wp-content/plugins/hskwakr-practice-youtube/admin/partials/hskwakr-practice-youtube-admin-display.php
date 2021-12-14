@@ -51,7 +51,7 @@ $the_youtube_channelid = get_option('hskwakr_youtube_channelid');
     <div class="col">
       <div class="alert alert-success">
         <h1>ShortCode Imformation</h1>
-        <p class="lead">To output videos simply use this shortcode: " [] "</p> 
+        <p class="lead">To output videos simply use this shortcode: " [hpy_display_videos] "</p>
         <hr class="my-4">
         <form method="POST" action="options.php">
 
