@@ -28,16 +28,19 @@
 <?php
 settings_fields('hskwakr_practice_youtube_custom_settings');
 do_settings_sections('hskwakr_practice_youtube_custom_settings');
+
+$the_youtube_apikey = get_option('hskwakr_youtube_apikey');
+$the_youtube_channelid = get_option('hskwakr_youtube_channelid');
 ?>
 
           <div class="mb-3">
             <label for="hskwakr_youtube_apikey">YouTube API Key</label>
-            <input type="text" name="hskwakr_youtube_apikey" value="<?php echo get_option('hskwakr_youtube_apikey'); ?>" class="form-control" id="hskwakr_youtube_apikey" placeholder="Your YouTube API Key">
+            <input type="text" name="hskwakr_youtube_apikey" value="<?php echo $the_youtube_apikey; ?>" class="form-control" id="hskwakr_youtube_apikey" placeholder="Your YouTube API Key">
           </div>
 
           <div class="mb-3">
             <label for="hskwakr_youtube_channelid">YouTube Channel ID</label>
-            <input type="text" name="hskwakr_youtube_channelid" value="<?php echo get_option('hskwakr_youtube_channelid'); ?>" class="form-control" id="hskwakr_youtube_channelid" placeholder="Your YouTube Channel ID">
+            <input type="text" name="hskwakr_youtube_channelid" value="<?php echo $the_youtube_channelid; ?>" class="form-control" id="hskwakr_youtube_channelid" placeholder="Your YouTube Channel ID">
           </div>
 
           <button type="submit" class="btn btn-primary">Submit</button>
@@ -55,19 +58,28 @@ do_settings_sections('hskwakr_practice_youtube_custom_settings');
 <?php
 settings_fields('hskwakr_practice_youtube_shortcode_settings');
 do_settings_sections('hskwakr_practice_youtube_shortcode_settings');
+
+$the_post_count = get_option('hskwakr_post_count');
+$the_video_type = get_option('hskwakr_video_styletype');
 ?>
 
           <div class="mb-3">
             <label for="hskwakr_post_count">Number of videos to show</label>
-            <input type="number" name="hskwakr_post_count" value="1" class="form-control" id="hskwakr_post_count" placeholder="">
+            <input type="number" name="hskwakr_post_count" value="<?php echo $the_post_count; ?>" class="form-control" id="hskwakr_post_count" placeholder="">
           </div>
 
           <div class="mb-3">
             <label for="hskwakr_video_styletype">Display type</label>
             <select name="hskwakr_video_styletype" class="form-select" id="hskwakr_video_styletype">
-              <option selected>Image Center</option>
-              <option value="1">Image Left</option>
-              <option value="2">Image Right</option>
+              <option <?php if ($the_video_type == 'Image Center'): echo 'selected'; endif?>>
+                Image Center
+              </option>
+              <option <?php if ($the_video_type == 'Image Left'): echo 'selected'; endif?>>
+                Image Left
+              </option>
+              <option <?php if ($the_video_type == 'Image Right'): echo 'selected'; endif?>>
+                Image Right
+              </option>
             </select>
           </div>
 
