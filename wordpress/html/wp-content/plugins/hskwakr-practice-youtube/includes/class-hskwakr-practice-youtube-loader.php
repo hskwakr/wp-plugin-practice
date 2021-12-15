@@ -147,5 +147,9 @@ class Hskwakr_Practice_Youtube_Loader
         foreach ($this->actions as $hook) {
             add_action($hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args']);
         }
+
+        foreach ($this->shortcodes as $hook) {
+            add_shortcode($hook['hook'], array( $hook['component'], $hook['callback'] ));
+        }
     }
 }
