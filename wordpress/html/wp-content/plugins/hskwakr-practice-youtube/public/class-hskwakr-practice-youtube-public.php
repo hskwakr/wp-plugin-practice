@@ -105,5 +105,22 @@ class Hskwakr_Practice_Youtube_Public
      */
     public function hpy_display_videos()
     {
+        $output = '';
+
+        $the_post_count = get_option('hskwakr_post_count');
+        $cpt_name = 'videos-hpy';
+        $all_video_posts = get_posts(array(
+            'post_type' => $cpt_name,
+            'numberposts' => $the_post_count,
+        ));
+
+        foreach ($all_video_posts as $post) {
+            $output = $output . '<div>';
+            $output = $output . '<img src="' . $post->hpy_img_res_med . '">';
+            $output = $output . '<p>' . $post->hpy_y_title . '</p>';
+            $output = $output . '</div>';
+        }
+
+        return $output;
     }
 }
