@@ -116,8 +116,14 @@ class Hskwakr_Practice_Youtube_Public
 
         foreach ($all_video_posts as $post) {
             $output = $output . '<div>';
-            $output = $output . '<img src="' . $post->hpy_img_res_med . '">';
-            $output = $output . '<p>' . $post->hpy_y_title . '</p>';
+            $output = $output .
+                '<a target="_blank" href="https://www.youtube.com/watch/?v=' .
+                $post->hpy_video_id .
+                '"><img src="' .
+                $post->hpy_img_res_med .
+                '"></a>';
+            //$output = $output . '<p>' . $post->hpy_y_title . '</p>';
+            //$output = $output . '<p>' . $post->hpy_video_id . '</p>';
             $output = $output . '</div>';
         }
 
