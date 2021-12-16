@@ -106,7 +106,7 @@ if ($the_action == 'import') {
             $new_post_id = $result;
 
             // add youtube meta data
-            add_post_meta($new_post_id, 'hpy_video_id', $item->id);
+            add_post_meta($new_post_id, 'hpy_video_id', $item->id->videoId);
             add_post_meta($new_post_id, 'hpy_published_at', $item->snippet->publishedAt);
             add_post_meta($new_post_id, 'hpy_channel_id', $item->snippet->channelId);
             add_post_meta($new_post_id, 'hpy_y_title', $item->snippet->title);
