@@ -19,3 +19,13 @@ End virtual enviroment.
 cd wordpress
 docker-compose down -v
 ```
+
+Connect to virtual enviroment
+
+```sh
+# web server
+localhost:8080
+
+# db server
+localhost:3307
+```
