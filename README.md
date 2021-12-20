@@ -20,7 +20,7 @@ cd wordpress
 docker-compose down -v
 ```
 
-Connect to virtual enviroment
+Connect to virtual enviroment.
 
 ```sh
 # web server
