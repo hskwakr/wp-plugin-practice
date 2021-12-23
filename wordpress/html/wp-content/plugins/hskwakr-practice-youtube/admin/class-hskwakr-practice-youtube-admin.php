@@ -227,4 +227,98 @@ class Hskwakr_Practice_Youtube_Admin
         // Registering your Custom Post Type
         register_post_type($name, $args);
     }
+
+    /**
+     * Update all video posts
+     *
+     * @since    1.0.0
+     */
+    public function video_update()
+    {
+        function get_video_list()
+        {
+            $youtube_api_url = 'https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=';
+            $youtube_api_max = '5';
+            $youtube_api_key = get_option('hskwakr_youtube_apikey');
+
+            $youtube_channel_id = get_option('hskwakr_youtube_channelid');
+
+            $youtube_api_query =
+                $youtube_api_url .
+                $youtube_channel_id .
+                '&maxResults=' .
+                $youtube_api_max .
+                '&key=' .
+                $youtube_api_key .
+                '';
+
+            $return = json_decode(file_get_contents($youtube_api_query));
+            return $return;
+        }
+
+        // add videos as custom post type
+        function register_youtube_video($item, $cpt_name)
+        {
+            $return = false;
+
+            // insert a new post type
+            $data = array(
+                'post_title' => $item->snippet->title,
+                'post_content' => $item->snippet->description,
+                'post_status' => 'publish',
+                'post_type' => $cpt_name
+            );
+
+            // insert into DB
+            $result = wp_insert_post($data);
+
+            // capture the ID of the post
+            if ($result && ! is_wp_error($result)) {
+                $new_post_id = $result;
+
+                // add youtube meta data
+                add_post_meta($new_post_id, 'hpy_video_id', $item->id->videoId);
+                add_post_meta($new_post_id, 'hpy_published_at', $item->snippet->publishedAt);
+                add_post_meta($new_post_id, 'hpy_channel_id', $item->snippet->channelId);
+                add_post_meta($new_post_id, 'hpy_y_title', $item->snippet->title);
+                add_post_meta($new_post_id, 'hpy_y_description', $item->snippet->description);
+                add_post_meta($new_post_id, 'hpy_img_res_med', $item->snippet->thumbnails->medium->url);
+                add_post_meta($new_post_id, 'hpy_img_res_high', $item->snippet->thumbnails->high->url);
+
+                $return = true;
+            }
+
+            return $return;
+        }
+
+        // get all video posts
+        $cpt_name = 'videos-hpy';
+        $all_video_posts = get_posts(array(
+            'post_type' => $cpt_name,
+            'numberposts' => 2500,
+        ));
+
+        $old_video_list = ',';   // the group of video id to compare old and new
+
+        // check if there are any videos to update
+        if (count($all_video_posts) > 0) {
+            foreach ($all_video_posts as $post) {
+                if ($post->hpy_video_id != '') {
+                    $old_video_list = $old_video_list . $post->hpy_video_id . ',';
+                }
+            }
+
+            // get new videos to compare
+            $new_video_list = get_video_list();
+            foreach ($new_video_list->items as $item) {
+                // determine if we already have the video
+                $is_exist = strpos($old_video_list, $item->id->videoId);
+            }
+
+            if ($is_exist === false) {
+                // add the video because it was not found in our database
+                register_youtube_video($item, $cpt_name);
+            }
+        }
+    }
 }

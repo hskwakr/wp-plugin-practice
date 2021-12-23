@@ -31,5 +31,9 @@ class Hskwakr_Practice_Youtube_Activator
      */
     public static function activate()
     {
+        // create a new cron job
+        if (!wp_next_scheduled('hpy_video_updater')) {
+            wp_schedule_event(time(), 'daily', 'hpy_video_update');
+        }
     }
 }
