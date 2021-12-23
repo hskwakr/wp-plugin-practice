@@ -165,6 +165,9 @@ class Hskwakr_Practice_Youtube
 
         // create custom post type
         $this->loader->add_action('init', $plugin_admin, 'custom_youtube_api');
+
+        // add scheduled event CRON JOB
+        $this->loader->add_action('hpy_video_update', $plugin_admin, 'video_update');
     }
 
     /**
